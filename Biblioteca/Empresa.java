@@ -12,7 +12,7 @@ public class Empresa {
             throw new NullPointerException("Objeto nulo");
         }
         if(sucursales.contains(s)){
-            throw new IllegalArgumentException("La sucursal ya esta en la Empresa");
+            throw new SucursalRepetidaException();
         }
     }
     
@@ -54,5 +54,13 @@ public class Empresa {
         }
         return total;
     }
-
+    
+    public double[] porcDispositivosPorTipo(String nombreSucursal){
+        for(Sucursal s : sucursales){
+            if(s.tieneNombre(nombreSucursal)){
+                return s.porcDispositivosPorTipo();
+            }
+        }
+        return null;
+    }
 }

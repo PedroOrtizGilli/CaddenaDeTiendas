@@ -38,6 +38,14 @@ public class Sucursal {
         return Objects.hash(nombre);
     }
     
+    public String getNombre(){
+        return this.nombre;
+    }
+    
+    public boolean tieneNombre(String nombre){
+        return this.nombre.equals(nombre);
+    }
+    
     public void agregarDispositivo(Dispositivo d){
         checkNull(d);
         this.dispositivos.add(d);
@@ -87,4 +95,21 @@ public class Sucursal {
         }
     }
     */
+    
+    public double[] porcDispositivosPorTipo(){
+        
+        int cantTipo = Tipo.values().length;
+        int total = dispositivos.size();
+        int[] cantidades = new int[cantTipo];
+        double[] porcentajes = new double[Tipo.values().length];
+        
+        for(Dispositivo d : dispositivos){
+            cantidades[d.getTipoDispositivo().ordinal()]++;
+        }
+        
+        for(int i = 0; i < cantTipo; i++){
+            porcentajes[i] = (double) cantidades[i] * 100 / total;
+        }
+        return porcentajes;
+    }
 }

@@ -68,8 +68,18 @@ public class CadenaDeTiendas {
         
         System.out.println("---------------------------------");
         
-        empresa.borrarDispositivod("asfdsfd");
+        
         empresa.listarDispositivos();
+        
+        double[] porcentajes = empresa.porcDispositivosPorTipo("Sucursal A");
+        for(int i=0; i<porcentajes.length;i++){
+            System.out.println(String.format("%s: %.2f", Tipo.values()[i].name(), porcentajes[i]));
+        }
+        
+        for(double porcentaje : empresa.porcDispositivosPorTipo("Sucursal A")){
+            System.out.println("Porcentaje: %.2f".formatted(porcentaje));
+            System.out.println(String.format("Porcentaje: %.2f", porcentaje));
+        }
     }
     
     public static void hardcodearEmpresa(Empresa e){
@@ -84,7 +94,7 @@ public class CadenaDeTiendas {
         s1.agregarDispositivo(new Dispositivo("asfdsfd", 1200, Tipo.COMPUTADORA));
         s1.agregarDispositivo(new Dispositivo("gtregdsf", 900, Tipo.TABLET));
         s1.agregarDispositivo(new Dispositivo("sdfghb", 500, Tipo.COMPUTADORA));
-        s1.agregarDispositivo(new Dispositivo("asfdsfd", 700, Tipo.TELEFONO));
+        s1.agregarDispositivo(new Dispositivo("asfdsfd", 700, Tipo.COMPUTADORA));
         
         s2.agregarDispositivo(new Dispositivo("fdghj76", 700, Tipo.TELEFONO));
         s2.agregarDispositivo(new Dispositivo("34g6uexd", 700, Tipo.COMPUTADORA));
